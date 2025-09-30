@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AICostCalculatorBoundaryValueAnalysisTest {
 
-    // TEXT test cases (TC1-TC11)
+    // TEXT test cases (BVA-TC1 --> BVA-TC12)
     @Test
     @Tag("TextTests")
     @Tag("InvalidInputTests")
@@ -29,15 +29,22 @@ class AICostCalculatorBoundaryValueAnalysisTest {
 
     @Test
     @Tag("TextTests")
+    public void testTextNearMaxDataSlowProcessing() {
+        assertEquals(4_250_116.96, AICostCalculator.calculateCost(AnalysisType.TEXT, 999_999.99, 8), 0.01);
+    }
+
+    @Test
+    @Tag("TextTests")
     public void testTextLargeDataSlowProcessing() {
         assertEquals(4_250_117.00, AICostCalculator.calculateCost(AnalysisType.TEXT, 1_000_000, 8), 0.01);
     }
 
     @Test
     @Tag("TextTests")
-    public void testTextMaxDataSlowProcessing() {
+    @Tag("InvalidInputTests")
+    public void testTextMaxDataPlusSlowProcessing() {
         assertThrows(IllegalArgumentException.class, () -> {
-            AICostCalculator.calculateCost(AnalysisType.TEXT, Double.MAX_VALUE, 8);
+            AICostCalculator.calculateCost(AnalysisType.TEXT, 1_000_000.01, 8);
         });
     }
 
@@ -80,7 +87,7 @@ class AICostCalculatorBoundaryValueAnalysisTest {
         assertEquals(70.13, AICostCalculator.calculateCost(AnalysisType.TEXT, 12.50, Integer.MAX_VALUE), 0.01);
     }
 
-    // IMAGE test cases (TC12-TC22)
+    // IMAGE test cases (BVA-TC13 --> BVA-TC24)
     @Test
     @Tag("ImageTests")
     @Tag("InvalidInputTests")
@@ -104,15 +111,22 @@ class AICostCalculatorBoundaryValueAnalysisTest {
 
     @Test
     @Tag("ImageTests")
+    public void testImageNearMaxDataSlowProcessing() {
+        assertEquals(8_500_042.42, AICostCalculator.calculateCost(AnalysisType.IMAGE, 999_999.99, 8), 0.01);
+    }
+
+    @Test
+    @Tag("ImageTests")
     public void testImageLargeDataSlowProcessing() {
         assertEquals(8_500_042.50, AICostCalculator.calculateCost(AnalysisType.IMAGE, 1_000_000, 8), 0.01);
     }
 
     @Test
     @Tag("ImageTests")
-    public void testImageMaxDataSlowProcessing() {
+    @Tag("InvalidInputTests")
+    public void testImageMaxDataPlusSlowProcessing() {
         assertThrows(IllegalArgumentException.class, () -> {
-            AICostCalculator.calculateCost(AnalysisType.IMAGE, Double.MAX_VALUE, 8);
+            AICostCalculator.calculateCost(AnalysisType.IMAGE, 1_000_000.01, 8);
         });
     }
 
@@ -155,7 +169,7 @@ class AICostCalculatorBoundaryValueAnalysisTest {
         assertEquals(148.75, AICostCalculator.calculateCost(AnalysisType.IMAGE, 12.50, Integer.MAX_VALUE), 0.01);
     }
 
-    // VIDEO test cases (TC23-TC33)
+    // VIDEO test cases (BVA-TC25 --> BVA-TC36)
     @Test
     @Tag("VideoTests")
     @Tag("InvalidInputTests")
@@ -179,15 +193,22 @@ class AICostCalculatorBoundaryValueAnalysisTest {
 
     @Test
     @Tag("VideoTests")
+    public void testVideoNearMaxDataSlowProcessing() {
+        assertEquals(12_750_084.87, AICostCalculator.calculateCost(AnalysisType.VIDEO, 999_999.99, 8), 0.01);
+    }
+
+    @Test
+    @Tag("VideoTests")
     public void testVideoLargeDataSlowProcessing() {
         assertEquals(12_750_085.00, AICostCalculator.calculateCost(AnalysisType.VIDEO, 1_000_000, 8), 0.01);
     }
 
     @Test
     @Tag("VideoTests")
-    public void testVideoMaxDataSlowProcessing() {
+    @Tag("InvalidInputTests")
+    public void testVideoMaxDataPlusSlowProcessing() {
         assertThrows(IllegalArgumentException.class, () -> {
-            AICostCalculator.calculateCost(AnalysisType.VIDEO, Double.MAX_VALUE, 8);
+            AICostCalculator.calculateCost(AnalysisType.VIDEO, 1_000_000.01, 8);
         });
     }
 
@@ -230,7 +251,7 @@ class AICostCalculatorBoundaryValueAnalysisTest {
         assertEquals(244.38, AICostCalculator.calculateCost(AnalysisType.VIDEO, 12.50, Integer.MAX_VALUE), 0.01);
     }
 
-    // NULL test cases (TC34-TC42)
+    // NULL test cases (BVA-TC37 --> BVA-TC48)
     @Test
     @Tag("InvalidInputTests")
     public void testNullZeroDataNormalProcessing() {
@@ -300,6 +321,22 @@ class AICostCalculatorBoundaryValueAnalysisTest {
     public void testNullMediumDataFastProcessing2() {
         assertThrows(IllegalArgumentException.class, () -> {
             AICostCalculator.calculateCost(null, 12.50, 2);
+        });
+    }
+
+    @Test
+    @Tag("InvalidInputTests")
+    public void testNullMediumDataSlowProcessingMillion() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            AICostCalculator.calculateCost(null, 12.50, 1_000_000);
+        });
+    }
+
+    @Test
+    @Tag("InvalidInputTests")
+    public void testNullMediumDataSlowProcessingMax() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            AICostCalculator.calculateCost(null, 12.50, Integer.MAX_VALUE);
         });
     }
 }
