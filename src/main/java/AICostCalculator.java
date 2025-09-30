@@ -30,10 +30,13 @@ public class AICostCalculator {
     static final int IMAGE_MEDIUM_TIME_MIN = 4;
     static final int IMAGE_MEDIUM_TIME_MAX = 6;
 
+    static final double MAX_DATA_SIZE = 1_000_000.0;
+
     public static double calculateCost(AnalysisType type, double dataSize, int processingTime) {
         if (type == null) throw new IllegalArgumentException("Analysis type cannot be null");
         if (dataSize <= 0) throw new IllegalArgumentException("Data size must be positive");
         if (processingTime <= 0) throw new IllegalArgumentException("Processing time must be positive");
+        if (dataSize > MAX_DATA_SIZE) throw new IllegalArgumentException("Data size exceeds maximum limit of " + MAX_DATA_SIZE);
 
         double baseCost = switch (type) {
             case TEXT -> TEXT_BASE + TEXT_PER_GB * dataSize;
