@@ -278,6 +278,14 @@ class AICostCalculatorBoundaryValueAnalysisTest {
 
     @Test
     @Tag("InvalidInputTests")
+    public void testNullNearMaxDataSlowProcessing() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            AICostCalculator.calculateCost(null, 999_999.99, 8);
+        });
+    }
+
+    @Test
+    @Tag("InvalidInputTests")
     public void testNullLargeDataNormalProcessing() {
         assertThrows(IllegalArgumentException.class, () -> {
             AICostCalculator.calculateCost(null, 1_000_000, 8);
@@ -286,9 +294,9 @@ class AICostCalculatorBoundaryValueAnalysisTest {
 
     @Test
     @Tag("InvalidInputTests")
-    public void testNullMaxDataNormalProcessing() {
+    public void testNullMaxDataPlusNormalProcessing() {
         assertThrows(IllegalArgumentException.class, () -> {
-            AICostCalculator.calculateCost(null, Double.MAX_VALUE, 8);
+            AICostCalculator.calculateCost(null, 1_000_000.01, 8);
         });
     }
 
