@@ -36,8 +36,9 @@ class AICostCalculatorBoundaryValueAnalysisTest {
     @Test
     @Tag("TextTests")
     public void testTextMaxDataSlowProcessing() {
-        // Expected Infinity due to $5 * Double.MAX_VALUE exceeding double precision
-        assertEquals(Double.POSITIVE_INFINITY, AICostCalculator.calculateCost(AnalysisType.TEXT, Double.MAX_VALUE, 8));
+        assertThrows(IllegalArgumentException.class, () -> {
+            AICostCalculator.calculateCost(AnalysisType.TEXT, Double.MAX_VALUE, 8);
+        });
     }
 
     @Test
@@ -110,8 +111,9 @@ class AICostCalculatorBoundaryValueAnalysisTest {
     @Test
     @Tag("ImageTests")
     public void testImageMaxDataSlowProcessing() {
-        // Expected Infinity due to $10 * Double.MAX_VALUE exceeding double precision
-        assertEquals(Double.POSITIVE_INFINITY, AICostCalculator.calculateCost(AnalysisType.IMAGE, Double.MAX_VALUE, 8));
+        assertThrows(IllegalArgumentException.class, () -> {
+            AICostCalculator.calculateCost(AnalysisType.IMAGE, Double.MAX_VALUE, 8);
+        });
     }
 
     @Test
@@ -184,8 +186,9 @@ class AICostCalculatorBoundaryValueAnalysisTest {
     @Test
     @Tag("VideoTests")
     public void testVideoMaxDataSlowProcessing() {
-        // Expected Infinity due to $15 * Double.MAX_VALUE exceeding double precision
-        assertEquals(Double.POSITIVE_INFINITY, AICostCalculator.calculateCost(AnalysisType.VIDEO, Double.MAX_VALUE, 8));
+        assertThrows(IllegalArgumentException.class, () -> {
+            AICostCalculator.calculateCost(AnalysisType.VIDEO, Double.MAX_VALUE, 8);
+        });
     }
 
     @Test
