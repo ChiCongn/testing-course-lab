@@ -43,17 +43,17 @@ Dưới đây là 9 đường đi độc lập và các test case tương ứng 
 | Path 9 | `calculateCost(VIDEO, 9.00, 1)`         | 0 → 1(F) → 3(F) → 5(F) → 7(F) → 9(VIDEO) → 12 → 13 → 14(T) → 15 → 18(F) → 20(T) → 21 → 22(F) → 24    | `VIDEO`, `dataSize < 10`, `processingTime ≤ 2` tăng 20% cơ bản, tăng 20% đặc biệt) |
 
 ## Test report
-| Id         | analysisType | dataSize     | processingTime | Expected Output          | Actual Output | Result |
-|------------|--------------|--------------|----------------|--------------------------|---------------|--------|
-| CF-C2-TC1  | null         | 12.50        | 8              | IllegalArgumentException |               |        |
-| CF-C2-TC2  | TEXT         | -2.00        | 8              | IllegalArgumentException |               |        |
-| CF-C2-TC3  | TEXT         | 8.00         | 0              | IllegalArgumentException |               |        |
-| CF-C2-TC4  | TEXT         | 1,000,001.50 | 10             | IllegalArgumentException |               |        |
-| CF-C2-TC5  | TEXT         | 100.00       | 1              | 724.00                   |               |        |
-| CF-C2-TC6  | TEXT         | 40.00        | 8              | 187.00                   |               |        |
-| CF-C2-TC7  | TEXT         | 40.00        | 4              | 220.00                   |               |        |
-| CF-C2-TC8  | IMAGE        | 100.00       | 5              | 945.00                   |               |        |
-| CF-C2-TC9  | VIDEO        | 9.00         | 1              | 329                      |               |        |
+| Id         | analysisType | dataSize     | processingTime | Expected Output          | Actual Output            | Result |
+|------------|--------------|--------------|----------------|--------------------------|--------------------------|--------|
+| CF-C2-TC1  | null         | 12.50        | 8              | IllegalArgumentException | IllegalArgumentException | Passed |
+| CF-C2-TC2  | TEXT         | -2.00        | 8              | IllegalArgumentException | IllegalArgumentException | Passed |
+| CF-C2-TC3  | TEXT         | 8.00         | 0              | IllegalArgumentException | IllegalArgumentException | Passed |
+| CF-C2-TC4  | TEXT         | 1,000,001.50 | 10             | IllegalArgumentException | IllegalArgumentException | Passed |
+| CF-C2-TC5  | TEXT         | 100.00       | 1              | 724.00                   | 724.00                   | Passed |
+| CF-C2-TC6  | TEXT         | 40.00        | 8              | 187.00                   | 187.00                   | Passed |
+| CF-C2-TC7  | TEXT         | 40.00        | 4              | 220.00                   | 220.00                   | Passed |
+| CF-C2-TC8  | IMAGE        | 100.00       | 5              | 945.00                   | 945.00                   | Passed |
+| CF-C2-TC9  | VIDEO        | 9.00         | 1              | 329.00                   | 329.00                   | Passed |
 
 ## Kết luận
 - **Path Coverage (C2)**: 9 test case trên bao phủ 100% các đường đi độc lập trong CFG của hàm `calculateCost`.
