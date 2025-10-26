@@ -110,18 +110,18 @@ Dựa trên code, mình xác định các biến và các cặp def-use:
 | cost           | 23 - 24        | 23 → 24                                                                                      | 0 → 1(F) → 3(F) → 5(F) → 7(F) → 9(IMAGE) → 11 → 13 → 14(F) → 16(F) → 18(F) → 20(F) → 22(T) → 23 → 24      | `calculateCost(IMAGE, 60.00, 5)`       |
 
 ## Test case và report
-| Id   | analysisType | dataSize     | processingTime | Expected Output             | Actual Output | Result        |
-|------|--------------|--------------|----------------|-----------------------------|---------------|---------------|
-| AU01 | null         | 0.00         | 0              | IllegalArgumentException    |               | Not Executed  |
-| AU02 | TEXT         | 60.00        | 1              | 484.00                      |               | Not Executed  |
-| AU03 | IMAGE        | 60.00        | 5              | 585.00                      |               | Not Executed  |
-| AU04 | VIDEO        | 9.00         | 2              | 329.00                      |               | Not Executed  |
-| AU05 | TEXT         | 0.00         | 8              | IllegalArgumentException    |               | Not Executed  |
-| AU06 | TEXT         | 1000001.00   | 2              | IllegalArgumentException    |               | Not Executed  |
-| AU07 | TEXT         | 40.00        | 1              | 264.00                      |               | Not Executed  |
-| AU08 | TEXT         | 10.00        | 0              | IllegalArgumentException    |               | Not Executed  |
-| AU09 | IMAGE        | 60.00        | 10             | 552.50                      |               | Not Executed  |
-| AU10 | TEXT         | 40.00        | 10             | 187.00                      |               | Not Executed  |
-| AU11 | IMAGE        | 60.00        | 2              | 780.00                      |               | Not Executed  |
-| AU12 | VIDEO        | 9.00         | 10             | 246.75                      |               | Not Executed  |
-| AU13 | TEXT         | 60.00        | 4              | 420.00                      |               | Not Executed  |
+| Id   | analysisType | dataSize     | processingTime | Expected Output             | Actual Output               | Result |
+|------|--------------|--------------|----------------|-----------------------------|-----------------------------|--------|
+| AU01 | null         | 0.00         | 0              | IllegalArgumentException    | IllegalArgumentException    | Passed |
+| AU02 | TEXT         | 60.00        | 1              | 484.00                      | 484.00                      | Passed |
+| AU03 | IMAGE        | 60.00        | 5              | 585.00                      | 585.00                      | Passed |
+| AU04 | VIDEO        | 9.00         | 2              | 329.00                      | 329.00                      | Passed |
+| AU05 | TEXT         | 0.00         | 8              | IllegalArgumentException    | IllegalArgumentException    | Passed |
+| AU06 | TEXT         | 1000001.00   | 2              | IllegalArgumentException    | IllegalArgumentException    | Passed |
+| AU07 | TEXT         | 40.00        | 1              | 264.00                      | 264.00                      | Passed |
+| AU08 | TEXT         | 10.00        | 0              | IllegalArgumentException    | IllegalArgumentException    | Passed |
+| AU09 | IMAGE        | 60.00        | 10             | 552.50                      | 552.50                      | Passed |
+| AU10 | TEXT         | 40.00        | 10             | 187.00                      | 187.00                      | Passed |
+| AU11 | IMAGE        | 60.00        | 2              | 780.00                      | 780.00                      | Passed |
+| AU12 | VIDEO        | 9.00         | 10             | 246.75                      | 246.75                      | Passed |
+| AU13 | TEXT         | 60.00        | 4              | 420.00                      | 420.00                      | Passed |
